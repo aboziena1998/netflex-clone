@@ -6,6 +6,9 @@ import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
+
 const Auth = () => {
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -98,6 +101,20 @@ const Auth = () => {
             >
               {variant}
             </button>
+            <div className="flex flex-row items-center gap-4 mt-8 justify-center">
+              <div
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center  cursor-pointer hover:opacity-80 trnasition"
+                onClick={() => signIn('google', { callbackUrl: '/' })}
+              >
+                <FcGoogle size={30} />
+              </div>
+              <div
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center  cursor-pointer hover:opacity-80 trnasition"
+                onClick={() => signIn('github', { callbackUrl: '/' })}
+              >
+                <FaGithub size={30} />
+              </div>
+            </div>
 
             <p className="text-neutral-500 mt-12">
               {variant === 'login'

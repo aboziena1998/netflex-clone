@@ -5,8 +5,20 @@ import { compare } from 'bcrypt';
 import { PrismaClient } from '@prisma/client';
 const prismadb = new PrismaClient();
 
+import GithubProvider from 'next-auth/providers/github';
+import GoogleProvider from 'next-auth/providers/google';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+
 export const options: NextAuthOptions = {
   providers: [
+    GithubProvider({
+      clientId: process.env.GITHUB_ID || '',
+      clientSecret: process.env.GITHUB_SECRET || '',
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+    }),
     Credentials({
       id: 'credentials',
       name: 'Credentials',
@@ -49,6 +61,7 @@ export const options: NextAuthOptions = {
   pages: {
     signIn: '/signin',
   },
+  adapter: PrismaAdapter(prismadb),
   debug: process.env.NODE_ENV === 'development',
   session: {
     strategy: 'jwt',

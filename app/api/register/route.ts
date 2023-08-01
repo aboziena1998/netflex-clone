@@ -18,7 +18,6 @@ export async function POST(req: Request) {
       password: string;
     };
 
-    console.log(email);
     const existingUser = await prismadb.user.findUnique({
       where: {
         email,
@@ -43,7 +42,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ user });
   } catch (error) {
     return new NextResponse(
-      JSON.stringify({ status: 'error', message: error.message }),
+      JSON.stringify({ status: 'error', message: error }),
       { status: 500 }
     );
   }
