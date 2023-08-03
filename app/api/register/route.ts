@@ -5,7 +5,6 @@ import { NextResponse } from 'next/server';
 const prismadb = new PrismaClient();
 
 export async function POST(req: Request) {
-  console.log('here');
   if (req.method !== 'POST') {
     return new NextResponse(JSON.stringify({ message: 'Error' }), {
       status: 405,
@@ -39,6 +38,7 @@ export async function POST(req: Request) {
         emailVerified: new Date(),
       },
     });
+
     return NextResponse.json({ user });
   } catch (error) {
     return new NextResponse(

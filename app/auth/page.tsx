@@ -1,5 +1,4 @@
 'use client';
-
 import Input from '@/components/Input';
 import React, { useCallback, useState } from 'react';
 import axios from 'axios';
@@ -26,7 +25,6 @@ const Auth = () => {
         email,
         password,
         redirect: false,
-        callbackUrl: '/',
       });
       router.push('/');
     } catch (error) {
@@ -102,18 +100,24 @@ const Auth = () => {
               {variant}
             </button>
             <div className="flex flex-row items-center gap-4 mt-8 justify-center">
-              <div
+              <button
                 className="w-10 h-10 bg-white rounded-full flex items-center justify-center  cursor-pointer hover:opacity-80 trnasition"
-                onClick={() => signIn('google', { callbackUrl: '/' })}
+                onClick={() => {
+                  signIn('google', { callbackUrl: '/' });
+                  router.push('/');
+                }}
               >
                 <FcGoogle size={30} />
-              </div>
-              <div
+              </button>
+              <button
                 className="w-10 h-10 bg-white rounded-full flex items-center justify-center  cursor-pointer hover:opacity-80 trnasition"
-                onClick={() => signIn('github', { callbackUrl: '/' })}
+                onClick={() => {
+                  signIn('github', {callbackUrl: '/'});
+                  router.push('/');
+                }}
               >
                 <FaGithub size={30} />
-              </div>
+              </button>
             </div>
 
             <p className="text-neutral-500 mt-12">
