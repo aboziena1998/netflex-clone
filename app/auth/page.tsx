@@ -25,12 +25,12 @@ const Auth = () => {
         email,
         password,
         redirect: false,
+        callbackUrl: '/profiles',
       });
-      router.push('/');
     } catch (error) {
       console.log(error);
     }
-  }, [email, password, router]);
+  }, [email, password]);
 
   const register = useCallback(async () => {
     console.log({ email, username, password });
@@ -103,8 +103,7 @@ const Auth = () => {
               <button
                 className="w-10 h-10 bg-white rounded-full flex items-center justify-center  cursor-pointer hover:opacity-80 trnasition"
                 onClick={() => {
-                  signIn('google', { callbackUrl: '/' });
-                  router.push('/');
+                  signIn('google', { callbackUrl: '/profiles' });
                 }}
               >
                 <FcGoogle size={30} />
@@ -112,8 +111,7 @@ const Auth = () => {
               <button
                 className="w-10 h-10 bg-white rounded-full flex items-center justify-center  cursor-pointer hover:opacity-80 trnasition"
                 onClick={() => {
-                  signIn('github', {callbackUrl: '/'});
-                  router.push('/');
+                  signIn('github', { callbackUrl: '/profiles' });
                 }}
               >
                 <FaGithub size={30} />

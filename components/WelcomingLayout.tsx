@@ -2,22 +2,25 @@
 import { Session } from 'next-auth';
 import React from 'react';
 import { signOut } from 'next-auth/react';
+import useCurrentUser from '@/hooks/useCurrentUser';
 interface Props {
   session: Session;
 }
-const WelcomingLayout = ({ session }: Props) => {
+const WelcomingLayout = () => {
+  const { data: user } = useCurrentUser();
+
   return (
     <div>
       <div className="flex items-center justify-center gap-4 ">
         <h1 className="font-bold text-center text-white text-2xl">
-          Welcome{' '}
+          Welcome
           <span className="font-extrabold text-lime-500 shadow-xl ">
-            {session.user?.name}
+            {user?.name}
           </span>
         </h1>
 
         <img
-          src={session.user?.image}
+          src={user?.image}
           width={40}
           height={40}
           alt="Profile Pic"

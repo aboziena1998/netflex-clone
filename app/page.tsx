@@ -5,10 +5,5 @@ import { redirect } from 'next/navigation';
 import WelcomingLayout from '@/components/WelcomingLayout';
 
 export default async function Home() {
-  const session = await getServerSession(options);
-
-  // if (!session || !session.user?.email) {
-  //   redirect('/auth');
-  // }
-  return <WelcomingLayout session={session} />;
+  return <WelcomingLayout />;
 }
