@@ -1,9 +1,9 @@
-import { signOut } from 'next-auth/react';
-import { getServerSession } from 'next-auth';
-import { options } from './api/auth/[...nextauth]/options';
-import { redirect } from 'next/navigation';
-import WelcomingLayout from '@/components/WelcomingLayout';
+import Navbar from '@/components/Navbar';
 
 export default async function Home() {
-  return <WelcomingLayout />;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
