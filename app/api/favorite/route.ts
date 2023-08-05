@@ -44,7 +44,8 @@ const handler = async (req: Request) => {
     }
 
     if (req.method === 'DELETE') {
-      const movieId: any = req.body;
+      const { movieId } = await req.json();
+      console.log(movieId);
       const updatedFavouriteIds = without(currentUser?.favouriteIds, movieId);
 
       const updatedUser = await prismadb.user.update({
