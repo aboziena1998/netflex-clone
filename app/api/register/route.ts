@@ -36,6 +36,7 @@ export async function POST(req: Request) {
         hashedPassword,
         image: '',
         emailVerified: new Date(),
+        favouriteIds: [],
       },
     });
 
