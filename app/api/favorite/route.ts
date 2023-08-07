@@ -5,9 +5,6 @@ import prismadb from '@/lib/prismadb';
 import { getServerSession } from 'next-auth';
 import { options } from '../auth/[...nextauth]/options';
 
-// import { PrismaClient } from '@prisma/client';
-
-// const prismadb = new PrismaClient();
 const handler = async (req: Request) => {
   try {
     const session = await getServerSession(options);

@@ -10,8 +10,6 @@ export const GET = async (req: Request) => {
     });
 
   try {
-    const session = await getServerSession(options);
-
     const movieCount = await prismadb.movie.count();
     const randomIndex = Math.floor(Math.random() * movieCount);
 

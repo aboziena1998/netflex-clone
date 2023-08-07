@@ -2,8 +2,7 @@ import prismadb from '@/lib/prismadb';
 import { getServerSession } from 'next-auth';
 import { options } from '../auth/[...nextauth]/options';
 import { NextResponse } from 'next/server';
-// import { PrismaClient } from 'prisma/prisma-client';
-// const prismadb = new PrismaClient();
+
 export const GET = async (req: Request) => {
   if (req.method !== 'GET')
     return new NextResponse(JSON.stringify({ message: 'Error' }), {
@@ -32,7 +31,7 @@ export const GET = async (req: Request) => {
     const favovriteMovies = await prismadb.movie.findMany({
       where: {
         id: {
-          in: currentUser?.favouriteIds,
+          in: currentUser?.favouriteIds || [],
         },
       },
     });

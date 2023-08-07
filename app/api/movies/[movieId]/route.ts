@@ -1,9 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
-// import prismadb from '@/lib/prismadb';
-import { NextApiRequest } from 'next';
+import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 const prismadb = new PrismaClient();
-import { ObjectId } from 'mongodb';
 
 export const GET = async (req: Request) => {
   if (req.method !== 'GET')
