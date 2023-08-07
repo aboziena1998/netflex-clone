@@ -18,7 +18,6 @@ const WelcomingLayout = () => {
             {user?.name}
           </span>
         </h1>
-
         <img
           src={user?.image}
           width={40}
