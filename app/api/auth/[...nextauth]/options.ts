@@ -36,8 +36,6 @@ export const options: NextAuthOptions = {
           throw new Error('Email and password are required');
         }
 
-        console.log("hey bitch i'm here");
-
         const user = await prismadb.user.findUnique({
           where: {
             email: credentials.email,

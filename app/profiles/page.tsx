@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 const Profiles = () => {
   const router = useRouter();
   const { data: user } = useCurrentUser();
-  console.log('🚀 ~ file: page.tsx:9 ~ Profiles ~ user:', user);
 
   return (
     <div className="flex items-center h-full justify-center ">
