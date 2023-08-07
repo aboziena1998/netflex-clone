@@ -9,6 +9,7 @@ export async function GET(req: Request) {
       status: 405,
     });
 
+  console.log;
   try {
     const session = await getServerSession(options);
 
